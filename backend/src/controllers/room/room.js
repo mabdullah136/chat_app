@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Room = require("../../models/room/room");
+const Message = require("../../models/messages/message");
 
 module.exports = {
   roomCheck: async (req, res) => {
@@ -47,7 +48,9 @@ module.exports = {
     try {
       const { roomId } = req.query;
 
-      const messages = await Room.find({ roomId }).sort({ createdAt: 1 });
+      const messages = await Message.find({ roomId: roomId })
+        .populate("senderId", "username")
+        .sort({ createdAt: 1 });
 
       res.json(messages);
     } catch (error) {
