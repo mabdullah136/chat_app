@@ -1,4 +1,4 @@
-# Chat App
+# Chat Ap
 A simple real-time chat application built with Node.js and WebSocket, allowing two users to communicate with each other instantly.
 
 ## Features
